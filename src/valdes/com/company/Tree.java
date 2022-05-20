@@ -1,12 +1,13 @@
 package valdes.com.company;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
-public class Tree {
-    private Node rootNode;
+class Tree {
+    private Node rootNode; // корневой узел
 
-    public Tree() {
+    public Tree() { // Пустое дерево
         rootNode = null;
     }
 
@@ -25,71 +26,26 @@ public class Tree {
         return currentNode; // возвращаем найденный элемент
     }
 
-    public int count(int value) {
-        int f0 = 1;
-        int f1 = 1;
-        int f2 = 2;
-        int s = 4;
-
-        int count = 0;
-        while (f2 <= value) {
-            f0 = f1;
-            f1 = f2;
-            f2 = f0 + f1;
-            s = s + f2;
-
-            count++;
-        }
-
-        s = s - f2;
-
-        count += 2;
-        System.out.println(count);
-        return count;
-    }
-
-    public int countPrevNum(int count) {
-        int n0 = 1;
-        int n1 = 1;
-        int n2 = 0;
-        int nuz = 0;
-
-        for (int i = 3; i <= count; i++) {
-            n2 = n0 + n1;
-            n0 = n1;
-            n1 = n2;
-            if (i == 9) {
-                nuz = n1;
-            }
-        }
-
-        return nuz;
-    }
-
-
     public void insertNode(int value) { // метод вставки нового элемента
         Node newNode = new Node(); // создание нового узла
         newNode.setValue(value); // вставка данных
         if (rootNode == null) { // если корневой узел не существует
             rootNode = newNode;// то новый элемент и есть корневой узел
-        }
-        else { // корневой узел занят
+        } else { // корневой узел занят
             Node currentNode = rootNode; // начинаем с корневого узла
             Node parentNode;
             while (true) // мы имеем внутренний выход из цикла
             {
                 parentNode = currentNode;
-                if(value == currentNode.getValue()) {   // если такой элемент в дереве уже есть, не сохраняем его
+                if (value == currentNode.getValue()) {   // если такой элемент в дереве уже есть, не сохраняем его
                     return;    // просто выходим из метода
-                }
-                else  if (value < currentNode.getValue()) {   // движение влево?
+                } else if (value < currentNode.getValue()) {   // движение влево?
                     currentNode = currentNode.getLeftChild();
-                    if (currentNode == null){ // если был достигнут конец цепочки,
+                    if (currentNode == null) { // если был достигнут конец цепочки,
                         parentNode.setLeftChild(newNode); //  то вставить слева и выйти из методы
                         return;
                     }
-                }
-                else { // Или направо?
+                } else { // Или направо?
                     currentNode = currentNode.getRightChild();
                     if (currentNode == null) { // если был достигнут конец цепочки,
                         parentNode.setRightChild(newNode);  //то вставить справа
@@ -100,8 +56,8 @@ public class Tree {
         }
     }
 
-
-    public boolean deleteNode(int value) {
+    public boolean deleteNode(int value) // Удаление узла с заданным ключом
+    {
         Node currentNode = rootNode;
         Node parentNode = rootNode;
         boolean isLeftChild = true;
@@ -151,6 +107,9 @@ public class Tree {
         return true; // элемент успешно удалён
     }
 
+    // метод возвращает узел со следующим значением после передаваемого аргументом.
+    // для этого он сначала переходим к правому потомку, а затем
+    // отслеживаем цепочку левых потомков этого узла.
     private Node receiveHeir(Node node) {
         Node parentNode = node;
         Node heirNode = node;
@@ -206,5 +165,36 @@ public class Tree {
                 globalStack.push(localStack.pop()); // перемещаем все элементы из локального стека в глобальный
         }
         System.out.println(separator);// подводим черту
+    }
+
+    public int countPrevNum(int count) {
+        int n0 = 1;
+        int n1 = 1;
+        int n2 = 0;
+        int nuz = 0;
+
+        for (int i = 3; i <= count; i++) {
+            n2 = n0 + n1;
+            n0 = n1;
+            n1 = n2;
+            if (i == 9) {
+                nuz = n1;
+            }
+        }
+
+        return nuz;
+    }
+
+    public void getArrayFib(int value) {
+        int[] arr = new int[value];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (i < 2) {
+                arr[i] = 1;
+            } else {
+                arr[i] = arr[i - 2] + arr[i - 1];
+            }
+            System.out.print(arr[i] + " ");
+        }
     }
 }
