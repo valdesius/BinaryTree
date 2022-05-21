@@ -185,7 +185,13 @@ class Tree {
         return nuz;
     }
 
-    public void getArrayFib(int value) {
+    public void insertFib(int[] arr){
+        for (int i = 5; i > 0; i--){
+            insertNode(arr[i]);
+        }
+    }
+
+    public int[] getArrayFib(int value) {
         int[] arr = new int[value];
 
         for (int i = 0; i < arr.length; i++) {
@@ -196,5 +202,6 @@ class Tree {
             }
             System.out.print(arr[i] + " ");
         }
+        return arr;
     }
 }
