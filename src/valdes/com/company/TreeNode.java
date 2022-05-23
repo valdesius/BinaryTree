@@ -3,6 +3,7 @@ package valdes.com.company;
 public class TreeNode {
     private int value;
     TreeNode leftChild;
+    TreeNode rightChild;
 
     public TreeNode() {
     }
@@ -22,8 +23,6 @@ public class TreeNode {
     public void setRightChild(TreeNode rightChild) {
         this.rightChild = rightChild;
     }
-
-    TreeNode rightChild;
 
     public TreeNode(int value) {
         this.value = value;
