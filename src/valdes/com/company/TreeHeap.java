@@ -18,7 +18,6 @@ public class TreeHeap {
             if (i < 2) {
                 arr[i] = 1;
             } else {
-
                 arr[i] = arr[i - 2] + arr[i - 1];
             }
             System.out.print(arr[i] + " ");
@@ -29,7 +28,6 @@ public class TreeHeap {
     public void printTree() {
 
         System.out.println();
-
         int countOfGaps = 32;
         int itemsPerRow = 1;
         int columnNumber = 0;
@@ -110,7 +108,6 @@ public class TreeHeap {
 
                 break;
             }
-
             heapArray[index] = heapArray[largerChild];
             index = largerChild;
         }

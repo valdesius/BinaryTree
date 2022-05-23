@@ -2,8 +2,8 @@ package valdes.com.company;
 
 public class TreeNode {
     private int value;
-    TreeNode leftChild;
-    TreeNode rightChild;
+    private TreeNode leftChild;
+    private TreeNode rightChild;
 
     public TreeNode() {
     }
