@@ -91,6 +91,7 @@ public class TreeHeap {
     private void displaceUp(int index) {
         int parentIndex = (index - 1) / 2;
         TreeNode bottom = heapArray[index];
+
         while (index > 0 && heapArray[parentIndex].getValue() < bottom.getValue()) {
             heapArray[index] = heapArray[parentIndex];
             index = parentIndex;
