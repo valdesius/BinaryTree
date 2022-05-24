@@ -12,6 +12,10 @@ public class TreeHeap {
     }
 
     public int[] getArrayFib(int value) {
+        if (value == 0) {
+            throw new IllegalArgumentException();
+        }
+
         int[] arr = new int[value];
 
         for (int i = 0; i < arr.length; i++) {
@@ -55,6 +59,12 @@ public class TreeHeap {
         System.out.println("\n" + line);
     }
 
+    public void insertFib(int[] arr) {
+        for (int i = arr.length - 1; i > 0; i--) {
+            insertNode(arr[i]);
+        }
+    }
+
     public boolean insertNode(int value) {
         if (currentSize == maxSize) {
             return false;
@@ -65,11 +75,7 @@ public class TreeHeap {
         return true;
     }
 
-    public void insertFib(int[] arr) {
-        for (int i = arr.length - 1; i > 0; i--) {
-            insertNode(arr[i]);
-        }
-    }
+
 
     public TreeNode removeNode(int index) {
         if (index > 0 && currentSize > index) {
